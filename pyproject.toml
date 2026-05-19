@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "us-etf-trend-vol"
+version = "0.1.0"
+description = "US ETF monthly trend + volatility target research/backtest/advisory framework with optional IBKR paper mode."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "AI generated research scaffold"}]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "PyYAML>=6.0",
+  "matplotlib>=3.7",
+  "python-dateutil>=2.8",
+  "tabulate>=0.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "ruff>=0.4", "tabulate>=0.9"]
+yahoo = ["yfinance>=0.2.40"]
+ibkr = ["ib_async>=1.0.0"]
+parquet = ["pyarrow>=14.0"]
+all = ["yfinance>=0.2.40", "ib_async>=1.0.0", "pyarrow>=14.0", "pytest>=7.4", "ruff>=0.4", "tabulate>=0.9"]
+
+[project.scripts]
+us-etf-trend-vol = "us_etf_trend_vol.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+data/raw/
+data/processed/
+data/snapshots/
+reports/backtests/*.png
+reports/backtests/*.md
+reports/advisory/*.csv
+reports/advisory/*.md
+logs/*.log
+.env
+.DS_Store

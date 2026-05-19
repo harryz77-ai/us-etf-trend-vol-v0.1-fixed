@@ -1,0 +1,51 @@
+strategy:
+  name: us_etf_monthly_trend_vol_ibkr_paper
+  version: "0.1"
+  universe_file: configs/universe_us_etf.yaml
+  cost_model_file: configs/cost_model.yaml
+  risk_limits_file: configs/risk_limits.yaml
+  cash_asset: BIL
+  rebalance_frequency: monthly
+  signal_date: month_end
+  execution_date: next_trading_day
+  initial_capital: 100000
+  benchmarks:
+    - SPY
+    - BIL
+  signals:
+    trend:
+      type: moving_average_ensemble
+      lookbacks_months: [6, 10, 12]
+      rule: adjusted_price_above_moving_average
+    momentum:
+      type: trailing_total_return
+      lookbacks_months: [6, 12]
+      skip_latest_month: false
+    volatility:
+      type: realized_volatility
+      lookback_days: 63
+      annualization_factor: 252
+  portfolio_construction:
+    require_positive_trend: true
+    require_min_history_months: 12
+    weighting_method: inverse_volatility
+    volatility_targeting:
+      enabled: true
+      lookback_days: 63
+  execution:
+    advisory_only: false
+    order_type: market
+    min_trade_notional: 100
+    ibkr:
+      host: 127.0.0.1
+      port: 7497
+      client_id: 77
+      exchange: SMART
+      currency: USD
+      account: null
+      allow_fractional_shares: false
+      transmit: true
+  output:
+    reports_dir: reports/backtests
+    advisory_dir: reports/advisory
+    logs_dir: logs

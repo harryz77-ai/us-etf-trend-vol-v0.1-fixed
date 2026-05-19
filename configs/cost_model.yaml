@@ -1,0 +1,13 @@
+cost_model:
+  commission_per_trade: 0.00
+  spread_cost_bps:
+    high: 1
+    medium: 3
+    low: 8
+  slippage_bps:
+    high: 2
+    medium: 5
+    low: 15
+  stress_test_multiplier: 1.0
+  expense_ratio:
+    apply_daily_accrual: true

@@ -1,0 +1,41 @@
+agents:
+  data_agent:
+    allowed:
+      - download_data
+      - validate_data
+      - generate_data_quality_report
+    forbidden:
+      - overwrite_raw_snapshots
+      - delete_audit_logs
+  research_agent:
+    allowed:
+      - propose_experiment_config
+      - run_parameter_grid
+      - summarize_results
+    forbidden:
+      - modify_risk_limits_without_diff
+      - claim_causality_without_test
+  backtest_agent:
+    allowed:
+      - run_backtest
+      - compare_benchmarks
+      - generate_report
+    forbidden:
+      - change_data_after_results
+  execution_agent:
+    allowed:
+      - generate_proposed_orders
+      - estimate_costs
+      - run_pre_trade_checks
+    forbidden:
+      - submit_live_orders
+      - submit_paper_orders_without_explicit_approval
+      - bypass_human_approval_gate
+  audit_agent:
+    allowed:
+      - check_run_id_uniqueness
+      - check_config_hash
+      - inspect_order_status_transitions
+    forbidden:
+      - delete_logs
+      - rewrite_approval_records

@@ -1,0 +1,13 @@
+risk_limits:
+  max_single_asset_weight: 0.25
+  max_asset_class_weight:
+    equity: 0.50
+    rates: 0.50
+    credit: 0.30
+    real_assets: 0.30
+    cash: 1.00
+  max_gross_exposure: 1.00
+  min_gross_exposure: 0.20
+  target_annual_volatility: 0.10
+  max_turnover_per_rebalance: 1.00
+  min_trade_weight: 0.01
